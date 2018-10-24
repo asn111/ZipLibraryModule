@@ -10,21 +10,25 @@ class ZipFileBulder {
     private var filePath: String? = null
     private var outputPath: String? = null
 
+    // get selected files
     fun getFile(files: List<File>): ZipFileBulder {
         this.files = files
         return this
     }
 
-    fun getFilePath(filePath: String): ZipFileBulder {
+    // get Directory path
+    fun getDirPath(filePath: String): ZipFileBulder {
         this.filePath = filePath
         return this
     }
 
+    // get Output path
     fun getOutputPath(outputPath: String): ZipFileBulder {
         this.outputPath = outputPath
         return this
     }
 
+    // function to zip all files in a directory
     fun zipAllFiles(): ZipFileBulder {
 
         if (filePath == null) {
@@ -39,6 +43,7 @@ class ZipFileBulder {
         return this
     }
 
+    // function to zip one or different files from a directory
     fun zipSelectedFiles(): ZipFileBulder {
 
         if (files == null) {
