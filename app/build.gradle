@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -11,6 +13,10 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        lintOptions {
+            abortOnError false
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -27,8 +33,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     // Permissions Library
     implementation 'com.github.zubairehman:PermissionManager:v1.0.0-alpha01'
-    // RxAndroid
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    implementation  'io.reactivex.rxjava2:rxkotlin:2.2.0'
-
+    // zipunzip Library
+//    implementation(group: 'ZipLibraryModule', name: 'zipunzip', version: '1.0.0', ext: 'aar')
 }

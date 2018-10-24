@@ -16,8 +16,10 @@ import com.zubair.permissionmanager.PermissionManager
 import com.zubair.permissionmanager.PermissionUtils
 import com.zubair.permissionmanager.enums.PermissionEnum
 import com.zubair.permissionmanager.interfaces.FullCallback
+import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 import java.net.URISyntaxException
+
 
 class MainActivity : AppCompatActivity(), FullCallback {
 
@@ -25,11 +27,29 @@ class MainActivity : AppCompatActivity(), FullCallback {
     var REQUEST_CHOOSER = 1234
     var REQUEST_CHOSER2 = 1122
     lateinit var filee: File
-    val oPath = Environment.getExternalStorageDirectory().path + File.separator + "Documents/name" + File.separator + "myZip2222.zip"
+    val oPath = Environment.getExternalStorageDirectory().path + File.separator + "Documents/name" + File.separator + "myZip.zip"
     val pathO = Environment.getExternalStorageDirectory().path + File.separator + "Documents"
+
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        btn_Folder.setOnClickListener {
+            readDir()
+        }
+        btn_select_files.setOnClickListener {
+            readFile()
+        }
+        btn_start_zip.setOnClickListener {
+
+        }
+
+    }
+
+    fun builder(){
+
+
 
     }
 

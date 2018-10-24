@@ -23,14 +23,32 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url 'https://jitpack.io' }
+        maven { url 'https://jitpack.io'}
+        maven { url 'http://localhost:8081/artifactory/gradle-dev-local'}
 
     }
 }
 
 artifactoryPublish.skip = true
-
-project('app') {
+//project('app') {
+//    artifactoryPublish.dependsOn('build')
+//    publishing {
+//        publications {
+//            app(MavenPublication) {
+//                groupId = group
+//                artifactId = project.getName()
+//                version = '1.0.0'
+//
+//                artifact("$buildDir/outputs/apk/release/app-release-unsigned.apk")
+//            }
+//        }
+//    }
+//
+//    artifactoryPublish {
+//        publications(publishing.publications.app)
+//    }
+//}
+project('zipunzip') {
     artifactoryPublish.dependsOn('build')
     publishing {
         publications {
@@ -56,7 +74,7 @@ artifactory {
     contextUrl = "${artifactory_contextUrl}"
     publish {
         repository {
-            repoKey = 'gradle-release-local' // The Artifactory repository key to publish to
+            repoKey = 'gradle-dev-local' // The Artifactory repository key to publish to
             username = "${artifactory_user}" // The publisher user name
             password = "${artifactory_password}" // The publisher password
         }
@@ -73,7 +91,7 @@ artifactory {
     }
     resolve {
         repository {
-            repoKey = 'gradle-release'
+            repoKey = 'gradle-dev'
             username = "${artifactory_user}"
             password = "${artifactory_password}"
             maven = true
